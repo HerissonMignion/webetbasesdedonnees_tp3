@@ -13,7 +13,7 @@ function NavLinks() {
                 <NavLink to="/students/home">Étudiants</NavLink>
             </li>
             <li>
-                <NavLink to="/interships/home">Stages</NavLink>
+                <NavLink to="/internships/home">Stages</NavLink>
             </li>
         </ul>
     );

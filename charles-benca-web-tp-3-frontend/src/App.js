@@ -11,9 +11,11 @@ import {
 import { useState } from "react";
 
 
+import MainNavBar from './shared/navigation/MainNavBar';
 import Home from "./home/Home";
 import StudentsHome from './students/StudentsHome';
-import MainNavBar from './shared/navigation/MainNavBar';
+import StudentsCreate from './students/StudentsCreate';
+import InternshipsHome from './internships/InternshipsHome';
 
 
 
@@ -30,8 +32,11 @@ function App() {
           <Route exact path="/students/home" element={
             <StudentsHome />
           } />
-          <Route exact path="/interships/home" element={
-            <Home />
+          <Route exact path="/students/create" element={
+            <StudentsCreate />
+          } />
+          <Route exact path="/internships/home" element={
+            <InternshipsHome />
           } />
         </Routes>
       </main>

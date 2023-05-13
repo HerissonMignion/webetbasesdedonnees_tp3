@@ -1,9 +1,11 @@
 .card {
     margin: 0;
+    border: 2px solid black;
     border-radius: 6px;
     padding: 10px;
     overflow: hidden;
-    background: white;
+    background: #8888ff;
+    display: inline-block;
   }
 
   

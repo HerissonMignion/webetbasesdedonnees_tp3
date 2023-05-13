@@ -1,7 +1,10 @@
 import React from "react";
-import { useCallback } from "react";
 import { useState } from "react";
-import { useFetch, useAsync } from "react-async";
+
+import config from "../config";
+import Student from "./components/Student";
+
+import StudentsNavBar from "./components/StudentsNavBar";
 
 
 function StudentsHome() {
@@ -10,7 +13,7 @@ function StudentsHome() {
     
     (async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/students/list");
+            const response = await fetch(config.backend + "/api/students/list");
             setStudents((await response.json()).students);
         }
         catch (err) {
@@ -21,11 +24,14 @@ function StudentsHome() {
 
     return (
         <>
-            students home
+            <StudentsNavBar />
+            students Home
             <ul>
                 {
                     students.map((student) => (
-                        <li key={student._id}> student name : {student.fullName}</li>
+                        <li key={student._id}>
+                            <Student student={student} />
+                        </li>
                     ))
                 }
             </ul>
