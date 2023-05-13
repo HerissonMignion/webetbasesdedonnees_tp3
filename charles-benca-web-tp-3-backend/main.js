@@ -8,7 +8,7 @@ mongoose.set('strictQuery', true);
 
 const HttpError = require("./models/http-error");
 const studentsRoutes = require("./routes/students-routes");
-const intershipsRoutes = require("./routes/interships-routes");
+const internshipsRoutes = require("./routes/internships-routes");
 // const testsRoutes = require("./routes/tests-routes");
 
 
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.use("/api/interships", intershipsRoutes);
+app.use("/api/internships", internshipsRoutes);
 app.use("/api/students", studentsRoutes);
 // app.use("/api/tests", testsRoutes);
 

@@ -23,7 +23,7 @@ const studentSchema = new Schema({
         required: true
     },
 
-    intership: {
+    internship: {
         type: mongoose.Types.ObjectId,
         required: false,
         ref: "Student"

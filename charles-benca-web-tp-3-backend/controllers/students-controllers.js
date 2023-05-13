@@ -1,7 +1,7 @@
 
 
 const Student = require("../models/student");
-const Intership = require("../models/intership");
+const Internship = require("../models/internship");
 const HttpError = require("../models/http-error");
 
 const mongoose = require("mongoose");
@@ -31,7 +31,7 @@ async function createStudent(req, res, next) {
 
     }
     catch (err) {
-        return next(new HttpError("An error occurred while creating the stuent", 500));
+        return next(new HttpError("An error occurred while creating the stuent:\n" + err.message, 500));
     }
 }
 

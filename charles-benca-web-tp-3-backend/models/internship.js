@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 
 
-const intershipSchema = new Schema({
+const internshipSchema = new Schema({
     contactName: {
         type: String,
         required: true
@@ -41,4 +41,4 @@ const intershipSchema = new Schema({
 
 });
 
-module.exports = mongoose.model("Intership", intershipSchema, "interships");
+module.exports = mongoose.model("internship", internshipSchema, "internships");

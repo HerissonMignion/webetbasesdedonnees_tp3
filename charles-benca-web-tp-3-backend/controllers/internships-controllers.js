@@ -1,14 +1,14 @@
 
 
 const Student = require("../models/student");
-const Intership = require("../models/intership");
+const Internship = require("../models/internship");
 const HttpError = require("../models/http-error");
 
 const mongoose = require("mongoose");
 
 
 
-async function createIntership(req, res, next) {
+async function createinternship(req, res, next) {
     try {
         const {
             contactName,
@@ -21,7 +21,7 @@ async function createIntership(req, res, next) {
             pay
         } = req.body;
 
-        const intership = new Intership({
+        const internship = new Internship({
             contactName,
             contactEmail,
             companyName,
@@ -32,36 +32,36 @@ async function createIntership(req, res, next) {
             pay
         });
 
-        await intership.save();
+        await internship.save();
 
         res.status(201).json({
-            intership: intership.toObject()
+            internship: internship.toObject()
         });
 
     }
     catch (err) {
-        return next(new HttpError("An error occurred while creating the intership", 500));
+        return next(new HttpError("An error occurred while creating the internship", 500));
     }
 }
 
 
-async function listInterships(req, res, next) {
+async function listinternships(req, res, next) {
     try {
-        const interships = await Intership.find({});
+        const internships = await internship.find({});
         res.status(201).json({
-            interships: interships.map((intership) => {
-                return intership.toObject();
+            internships: internships.map((internship) => {
+                return internship.toObject();
             })
         });
     }
     catch (err) {
-        return next(new HttpError("An error occurred while listing interships", 500));
+        return next(new HttpError("An error occurred while listing internships", 500));
     }
 }
 
 
 
 module.exports = {
-    createIntership,
-    listInterships
+    createinternship,
+    listinternships
 };
