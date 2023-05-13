@@ -16,6 +16,7 @@ import Home from "./home/Home";
 import StudentsHome from './students/StudentsHome';
 import StudentsCreate from './students/StudentsCreate';
 import InternshipsHome from './internships/InternshipsHome';
+import InternshipsCreate from './internships/InternshipsCreate';
 
 
 
@@ -37,6 +38,9 @@ function App() {
           } />
           <Route exact path="/internships/home" element={
             <InternshipsHome />
+          } />
+          <Route exact path="/internships/create" element={
+            <InternshipsCreate />
           } />
         </Routes>
       </main>

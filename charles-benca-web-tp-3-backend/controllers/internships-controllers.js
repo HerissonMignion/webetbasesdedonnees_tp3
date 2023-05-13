@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 
 
 
-async function createinternship(req, res, next) {
+async function createInternships(req, res, next) {
     try {
         const {
             contactName,
@@ -45,9 +45,9 @@ async function createinternship(req, res, next) {
 }
 
 
-async function listinternships(req, res, next) {
+async function listInternships(req, res, next) {
     try {
-        const internships = await internship.find({});
+        const internships = await Internship.find({});
         res.status(201).json({
             internships: internships.map((internship) => {
                 return internship.toObject();
@@ -62,6 +62,6 @@ async function listinternships(req, res, next) {
 
 
 module.exports = {
-    createinternship,
-    listinternships
+    createInternships,
+    listInternships
 };

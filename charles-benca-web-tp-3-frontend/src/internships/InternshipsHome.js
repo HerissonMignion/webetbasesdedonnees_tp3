@@ -2,6 +2,8 @@ import React from "react";
 
 import InternshipsNavBar from "./components/InternshipsNavBar";
 
+import InternshipsList from "./components/InternshipsList";
+
 function InternshipsHome() {
 
 
@@ -9,7 +11,7 @@ function InternshipsHome() {
         <>
             <InternshipsNavBar />
             Accueil des stages
-        
+            <InternshipsList />
         </>
     );
 }
