@@ -7,9 +7,8 @@ mongoose.set('strictQuery', true);
 
 
 const HttpError = require("./models/http-error");
-// const teachersRoutes = require("./routes/teachers-routes");
-// const coursesRoutes = require("./routes/courses-routes");
 const studentsRoutes = require("./routes/students-routes");
+const intershipsRoutes = require("./routes/interships-routes");
 // const testsRoutes = require("./routes/tests-routes");
 
 
@@ -18,8 +17,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-// app.use("/api/teachers", teachersRoutes);
-// app.use("/api/courses", coursesRoutes);
+app.use("/api/interships", intershipsRoutes);
 app.use("/api/students", studentsRoutes);
 // app.use("/api/tests", testsRoutes);
 

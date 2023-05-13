@@ -1,7 +1,7 @@
 
 
 const Student = require("../models/student");
-const Interships = require("../models/intership");
+const Intership = require("../models/intership");
 const HttpError = require("../models/http-error");
 
 const mongoose = require("mongoose");
@@ -37,7 +37,17 @@ async function createStudent(req, res, next) {
 
 
 async function listStudents(req, res, next) {
-
+    try {
+        const students = await Student.find({});
+        res.status(201).json({
+            students: students.map((student) => {
+                return student.toObject();
+            })
+        });
+    }
+    catch (err) {
+        return next(new HttpError("An error occurred while listing students", 500));
+    }
 }
 
 

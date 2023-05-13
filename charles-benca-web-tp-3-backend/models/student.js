@@ -21,6 +21,12 @@ const studentSchema = new Schema({
         type: String,
         enum: ["programming", "networking"],
         required: true
+    },
+
+    intership: {
+        type: mongoose.Types.ObjectId,
+        required: false,
+        ref: "Student"
     }
 });
 
