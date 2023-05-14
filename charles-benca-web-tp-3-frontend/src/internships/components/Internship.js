@@ -7,7 +7,17 @@ function Internship({ internship }) {
 
     return (
         <Card>
-            internship
+            <h1>Stage</h1>
+            Nom du contact : {internship.contactName}<br></br>
+            Courriel du contact : {internship.contactEmail}<br></br>
+            Nom de la compagnie : {internship.companyName}<br></br>
+            Addresse de la compagnie : {internship.companyAddress}<br></br>
+            Profile : {internship.profile}<br></br>
+            Nombre total de candidats désirés : {internship.placesAvailable}<br></br>
+            Description :
+            <p>
+                {internship.description}
+            </p>
         </Card>
     );
 }

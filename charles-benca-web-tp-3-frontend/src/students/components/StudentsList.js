@@ -3,19 +3,19 @@ import React from "react";
 import { useState } from "react";
 import config from "../../config";
 
-import Internship from "./Internship";
+import Student from "./Student";
 
-function InternshipsList() {
+
+function StudentsList() {
     const [loading, setLoading] = useState(true);
-    const [internships, setInternships] = useState([]);
+    const [students, setStudents] = useState([]);
     const [error, setError] = useState(false);
     const [filter, setFilter] = useState(""); // chaine de texte vide signifie que tout est accepté.
     
-
     (async () => {
         try {
-            const response = await fetch(config.backend + "/api/internships/list");
-            setInternships((await response.json()).internships);
+            const response = await fetch(config.backend + "/api/students/list");
+            setStudents((await response.json()).students);
         }
         catch (err) {
             setError(true);
@@ -23,18 +23,18 @@ function InternshipsList() {
         setLoading(false);
     })();
 
-
     function filterOnChange(e) {
         setFilter(e.target.value);
     }
 
-    //obtient les stages qui passent le filtre
-    function getFilteredInternships() {
+    //obtient les étudiants qui passent le filtre
+    function getFilteredStudents() {
         if (filter == "") {
-            return internships;
+            return students;
         }
-        return internships.filter((internship) => (internship.profile == filter));
+        return students.filter((student) => (student.profile == filter));
     }
+
 
     return (
         <div>
@@ -66,25 +66,25 @@ function InternshipsList() {
                 {
                     error
                     ?
-                        "Une erreur s'est produite"
+                        "Une erreur s'est prduite"
                     :
                         loading
                         ?
-                            "Chargement des stages en cours"
+                            "Chargement des étudiants en cours"
                         :
-                            internships.length > 0
+                            students.length > 0
                             ?
                                 <ul>
                                     {
-                                        getFilteredInternships().map((internship) => (
+                                        getFilteredStudents().map((student) => (
                                             <li>
-                                                <Internship internship={internship} />
+                                                <Student student={student} />
                                             </li>
                                         ))
                                     }
                                 </ul>
                             :
-                                "Il n'y a aucun stage"
+                                "Il n'y a aucun étudiant"
                 }
             </div>
         </div>
@@ -92,5 +92,4 @@ function InternshipsList() {
 }
 
 
-
-export default InternshipsList;
+export default StudentsList;
