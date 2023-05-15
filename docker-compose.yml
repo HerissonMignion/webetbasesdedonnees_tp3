@@ -11,20 +11,21 @@ services:
     build:
       context: charles-benca-web-tp-3-backend
     ports:
-      - 8086:5000
-    networks:
-      - tp3_network
+      - 127.0.0.1:5000:5000
+#      - 5000:5000
+#    networks:
+#      - tp3_network
   database:
     image: "mongo:latest"
     container_name: charles_tp3_database
     ports:
       - 27018:27018
-    networks:
-      - tp3_network
+#    networks:
+#      - tp3_network
 
 
-networks:
-  tp3_network:
-    driver: bridge
+#networks:
+#  tp3_network:
+#    driver: bridge
 
 # https://geshan.com.np/blog/2023/03/mongodb-docker-compose/
