@@ -40,7 +40,7 @@ async function createInternships(req, res, next) {
 
     }
     catch (err) {
-        return next(new HttpError("An error occurred while creating the internship", 500));
+        return next(new HttpError("An error occurred while creating the internship\n" + err.message, 500));
     }
 }
 

@@ -13,11 +13,11 @@ function StudentsCreate() {
     const [email, setEmail] = useState("");
     const [profile, setProfile] = useState("programming");
 
-    const [created, setCreated] = useState(false);
+    const [created, setCreated] = useState(false);
     const [creationError, setCreationError] = useState(false); // indique s'il y a eu une erreur pendant la création
     const [creationErrorMessage, setCreationErrorMessage] = useState(""); 
 
-    function buttonCreateStudent() {
+    function buttonCreateStudentHandler() {
         const student = {
             fullName,
             daNumber,
@@ -79,6 +79,7 @@ function StudentsCreate() {
                             onChange={(e) => {
                                 setDaNumber(e.target.value);
                             }}
+                            value={daNumber}
                         />
                     </label>
                     <br></br>
@@ -89,6 +90,7 @@ function StudentsCreate() {
                             onChange={(e) => {
                                 setEmail(e.target.value);
                             }}
+                            value={email}
                         />
                     </label>
                     <br></br>
@@ -116,7 +118,7 @@ function StudentsCreate() {
                     </label>
                     <br></br>
                     <button
-                        onClick={buttonCreateStudent}
+                        onClick={buttonCreateStudentHandler}
                     >
                         Créer l'étudiant
                     </button>

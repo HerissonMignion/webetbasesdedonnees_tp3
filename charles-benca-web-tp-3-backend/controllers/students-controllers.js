@@ -64,6 +64,8 @@ async function assignInternshipToStudent(req, res, next) {
             internship = await Internship.findById(internshipId);
         }
 
+        // TODO : s'assurer que le maximum d'étudiant à ce stage n'est pas dépassé (qu'il y a encore de la place)
+
         student.internship = internship;
 
         await student.save();
