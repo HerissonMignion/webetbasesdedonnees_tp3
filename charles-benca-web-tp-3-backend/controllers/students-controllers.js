@@ -51,8 +51,36 @@ async function listStudents(req, res, next) {
 }
 
 
+async function assignInternshipToStudent(req, res, next) {
+    try {
+        const {
+            internshipId,
+            studentId
+        } = req.body;
+
+        const student = await Student.findById(studentId);
+        let internship = undefined;
+        if (internshipId && internshipId !== "undefined") {
+            internship = await Internship.findById(internshipId);
+        }
+
+        student.internship = internship;
+
+        await student.save();
+
+
+        res.status(200).json({
+            student: student.toObject()
+        });
+    }
+    catch (err) {
+        return next(new HttpError("An error occurred while assigning the internship\n" + err.message, 500));
+    }
+}
+
 
 module.exports = {
     createStudent,
-    listStudents
+    listStudents,
+    assignInternshipToStudent
 };
