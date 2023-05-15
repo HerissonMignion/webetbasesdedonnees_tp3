@@ -39,6 +39,10 @@ async function createStudent(req, res, next) {
 async function listStudents(req, res, next) {
     try {
         const students = await Student.find({});
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.setHeader("Access-Control-Allow-Headers", "*");
+        res.setHeader("Access-Control-Allow-Methods", "*");
+        
         res.status(201).json({
             students: students.map((student) => {
                 return student.toObject();
@@ -46,7 +50,7 @@ async function listStudents(req, res, next) {
         });
     }
     catch (err) {
-        return next(new HttpError("An error occurred while listing students", 500));
+        return next(new HttpError("An error occurred while listing students\n" + err.message, 500));
     }
 }
 

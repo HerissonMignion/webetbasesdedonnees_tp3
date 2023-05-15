@@ -48,6 +48,7 @@ app.use((error, req, res, next) => {
 // /!\ /!\ /!\ 
 // /!\ /!\ /!\ en cas d'erreur, aller dans ./.env modifier les valeurs
 // /!\ /!\ /!\ 
+// mongoose.connect("mongodb://" + process.env.database_host + ":" + process.env.database_port + "/" + process.env.database_name)
 mongoose.connect("mongodb://" + process.env.database_host + "/" + process.env.database_name)
 .then(() => {
     console.log("connected to mongodb");
