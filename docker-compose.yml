@@ -5,13 +5,13 @@ services:
     build:
       context: charles-benca-web-tp-3-frontend
     ports:
-      - 8085:3000
+      - 0.0.0.0:8085:3000
   backend:
     container_name: charles_tp3_backend
     build:
       context: charles-benca-web-tp-3-backend
     ports:
-      - 127.0.0.1:5000:5000
+      - 0.0.0.0:5000:5000
 #      - 5000:5000
 #    networks:
 #      - tp3_network
@@ -19,7 +19,7 @@ services:
     image: "mongo:latest"
     container_name: charles_tp3_database
     ports:
-      - 27018:27018
+      - 127.0.0.1:27018:27018
 #    networks:
 #      - tp3_network
 

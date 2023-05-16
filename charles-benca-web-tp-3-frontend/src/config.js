@@ -1,7 +1,10 @@
-
-const config = {
-    backend: "http://localhost:5000"
+const configs = {
+    dev: {
+        backend: "http://localhost:5000",
+    },
+    prod: {
+        backend: "http://tp3backend.herissonmignion.com"
+    }
 };
 
-
-export default config;
+export default configs.dev;
