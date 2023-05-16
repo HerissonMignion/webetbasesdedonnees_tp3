@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.construction-banner {
+  background-color: yellow;
+  font-size: 50px;
+}

@@ -5,13 +5,13 @@ services:
     build:
       context: charles-benca-web-tp-3-frontend
     ports:
-      - 0.0.0.0:8085:3000
+      - 127.0.0.1:8085:3000
   backend:
     container_name: charles_tp3_backend
     build:
       context: charles-benca-web-tp-3-backend
     ports:
-      - 0.0.0.0:5000:5000
+      - 127.0.0.1:5000:5000
 #      - 5000:5000
 #    networks:
 #      - tp3_network

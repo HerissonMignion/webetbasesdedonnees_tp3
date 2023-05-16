@@ -23,6 +23,11 @@ import InternshipsCreate from './internships/InternshipsCreate';
 function App() {
   return (
     <Router>
+      <div className='construction-banner'>
+        <h1>
+          Under Construction
+        </h1>
+      </div>
       <MainNavBar />
       <main>
         <Routes>
