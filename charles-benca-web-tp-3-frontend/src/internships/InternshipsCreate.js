@@ -69,7 +69,7 @@ function InternshipsCreate() {
             Créer un stage
             {!created
             && 
-                <div>
+                <div className="Student-form stage">
                     <label>
                         Nom du contact : 
                         <input
