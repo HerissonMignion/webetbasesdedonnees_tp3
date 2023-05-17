@@ -1,9 +1,9 @@
 const configs = {
     dev: {
-        backend: "http://localhost:5000",
+        backend: "https://localhost:5000",
     },
     prod: {
-        backend: "http://tp3backend.herissonmignion.com"
+        backend: "https://tp3backend.herissonmignion.com"
     }
 };
 

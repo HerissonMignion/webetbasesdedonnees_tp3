@@ -2,6 +2,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const https = require("https");
+const fs = require("fs");
 require("dotenv").config();
 mongoose.set('strictQuery', true);
 
@@ -53,7 +55,14 @@ mongoose.connect("mongodb://" + process.env.database_host + "/" + process.env.da
 .then(() => {
     console.log("connected to mongodb");
     const port = process.env.app_listen_port;
-    app.listen(port);
+
+    const httpsServer = https.createServer({
+        key: fs.readFileSync("./ssl/server.key", "utf8"),
+        cert: fs.readFileSync("./ssl/server.cert", "utf8")
+    }, app);
+
+    // app.listen(port);
+    httpsServer.listen(port);
     console.log("listening on port " + port);
 
 })

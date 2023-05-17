@@ -10,12 +10,10 @@ COPY ./src ./src
 COPY ./ssl ./ssl
 
 WORKDIR /app/ssl
-RUN echo "============="
-RUN ls
 RUN sh ./regen.sh
 
 
 WORKDIR /app
 RUN npm run build
 
-CMD ["serve", "-s", "build", "--ssl-cert", "ssl/server.cert", "--ssl-key", "ssl/server.key"]
+CMD ["serve", "--cors", "-s", "build", "--ssl-cert", "ssl/server.cert", "--ssl-key", "ssl/server.key"]
