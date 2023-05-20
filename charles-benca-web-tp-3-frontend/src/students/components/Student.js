@@ -11,6 +11,7 @@ function Student({ student }) {
     return (
         <Card>
             <h1>Nom complet : { student.fullName }</h1>
+            <h1>id = {student._id}</h1>
             <p>
                 Numéro de DA : { student.daNumber }<br></br>
                 Courriel : { student.email }<br></br>

@@ -20,6 +20,8 @@ services:
     container_name: charles_tp3_database
     ports:
       - 127.0.0.1:27018:27018
+    volumes:
+      - ./data:/data/db
 #    networks:
 #      - tp3_network
 
