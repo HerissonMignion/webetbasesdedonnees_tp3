@@ -43,6 +43,7 @@ app.use((error, req, res, next) => {
     }
     res.status(error.code || 500);
     res.json({
+        error: true,
         message: error.message || "An error occurred."
     });
 });

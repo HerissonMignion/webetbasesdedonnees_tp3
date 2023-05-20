@@ -11,7 +11,11 @@ function InternshipsHome() {
         <>
             <InternshipsNavBar />
             Accueil des stages
-            <InternshipsList />
+            <InternshipsList
+                onClickCallback={(internship) => {
+                    alert(JSON.stringify(internship));
+                }}
+            />
         </>
     );
 }

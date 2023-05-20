@@ -3,10 +3,16 @@ import React from "react";
 import Card from "../../shared/card/Card";
 
 
-function Internship({ internship }) {
+function Internship({ internship, onClickCallback }) {
 
     return (
-        <Card>
+        <Card
+            onClickCallback={() => {
+                if (onClickCallback) {
+                    onClickCallback(internship);
+                }
+            }}
+        >
             <h1>Stage</h1>
             <h1>id = {internship._id}</h1>
             Nom du contact : {internship.contactName}<br></br>

@@ -5,7 +5,8 @@ import config from "../../config";
 
 import Internship from "./Internship";
 
-function InternshipsList() {
+
+function InternshipsList({ onClickCallback }) {
     const [loading, setLoading] = useState(true);
     const [internships, setInternships] = useState([]);
     const [error, setError] = useState(false);
@@ -78,7 +79,12 @@ function InternshipsList() {
                                     {
                                         getFilteredInternships().map((internship) => (
                                             <li>
-                                                <Internship internship={internship} />
+                                                <Internship
+                                                    internship={internship}
+                                                    onClickCallback={(internship) => {
+                                                        onClickCallback(internship);
+                                                    }}
+                                                />
                                             </li>
                                         ))
                                     }

@@ -4,14 +4,16 @@ import "./Card.css"
 
 
 
-function Card({children}) {
-
+function Card(props) {
+    const { children, onClickCallback } = props;
 
     return (
         <div
             className="card"
             onClick={() => {
-                alert("asdf");
+                if (onClickCallback) {
+                    onClickCallback();
+                }
             }}
         >
             {
