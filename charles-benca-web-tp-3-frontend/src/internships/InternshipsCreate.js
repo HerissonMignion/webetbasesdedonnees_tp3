@@ -11,7 +11,7 @@ function InternshipsCreate() {
     const [contactEmail, setContactEmail] = useState("");
     const [companyName, setCompanyName] = useState("");
     const [companyAddress, setCompanyAddress] = useState("");
-    const [profile, setProfile] = useState("");
+    const [profile, setProfile] = useState("programming");
     const [placesAvailable, setPlacesAvailable] = useState(1);
     const [description, setDescription] = useState("");
     const [pay, setPay] = useState("");

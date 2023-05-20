@@ -70,14 +70,24 @@ async function assignInternshipToStudent(req, res, next) {
 
         // TODO : s'assurer que le maximum d'étudiant à ce stage n'est pas dépassé (qu'il y a encore de la place)
 
-        student.internship = internship;
-
-        await student.save();
-
-
-        res.status(200).json({
-            student: student.toObject()
+        const alreadyAssignedStudents = await Student.find({
+            internship: internship
         });
+
+        //on make sure qu'il reste de la place
+        if (alreadyAssignedStudents.length < internship.placesAvailable) {
+            student.internship = internship;
+            await student.save();
+            res.status(200).json({
+                student: student.toObject()
+            });
+        }
+        else {
+            return next(new HttpError("Cannot add more students to this internship", 400));
+        }
+
+
+
     }
     catch (err) {
         return next(new HttpError("An error occurred while assigning the internship\n" + err.message, 500));
