@@ -10,6 +10,32 @@ import config from "../../config";
 function Student({ student }) {
     const [overlayOpen, setOverlayOpen] = useState(false);
 
+    const [internship, setInternship] = useState(null);
+
+    if (student.internship) {
+        (async () => {
+            try {
+                const response = await fetch(config.backend + "/api/internships/get", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        internshipId: student.internship
+                    })
+                });
+    
+                const responseJson = await response.json();
+
+                setInternship(responseJson.internship);
+
+            }
+            catch (err) {
+                console.log(err);
+            }
+        })();
+    }
+
     async function sendAssignInternshipRequest(internship) {
         try {
             const response = await fetch(config.backend + "/api/students/assignInternship", {
@@ -50,7 +76,7 @@ function Student({ student }) {
                     ?
                         (
                             <>
-                                est inscrit à un stage
+                                Est inscrit à un stage
                                 
                             </>
                         )
@@ -71,6 +97,15 @@ function Student({ student }) {
                                     }
                                 </button>
                             </>
+                        )
+                }
+                {
+                    internship
+                    &&
+                        (
+                            <div>
+                                <Internship internship={internship} />
+                            </div>
                         )
                 }
             </p>
