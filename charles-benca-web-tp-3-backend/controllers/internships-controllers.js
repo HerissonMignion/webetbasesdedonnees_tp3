@@ -5,6 +5,7 @@ const Internship = require("../models/internship");
 const HttpError = require("../models/http-error");
 
 const mongoose = require("mongoose");
+const { assignInternshipToStudent } = require("./students-controllers");
 
 
 
@@ -48,7 +49,7 @@ async function createInternships(req, res, next) {
 async function listInternships(req, res, next) {
     try {
         const internships = await Internship.find({});
-        res.status(201).json({
+        res.status(200).json({
             internships: internships.map((internship) => {
                 return internship.toObject();
             })
@@ -59,9 +60,24 @@ async function listInternships(req, res, next) {
     }
 }
 
+async function getInternship(req, res, next) {
+    try {
+        const { internshipId } = req.body;
+        const internship = await Internship.findById(internshipId);
+        res.status(200).json({
+            internship: internship.toObject()
+        });
+    }
+    catch {
+        return next(new HttpError("An error occurred while fetching the internship", 500));
+    }
+}
+
+
 
 
 module.exports = {
     createInternships,
-    listInternships
+    listInternships,
+    getInternship
 };
