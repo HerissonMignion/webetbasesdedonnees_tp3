@@ -1,12 +1,13 @@
 import React from "react";
 
+import { useState } from "react";
 
 import Card from "../../shared/card/Card";
 
 
 
 function Student({ student }) {
-
+    const [overlayOpen, setOverlayOpen] = useState(false);
 
     return (
         <Card>
@@ -24,6 +25,15 @@ function Student({ student }) {
                         "aucun stage"
                 }
             </p>
+            {
+                overlayOpen
+                &&
+                    (
+                        <div>
+                            asdfasdf
+                        </div>
+                    )
+            }
         </Card>
     );
 }

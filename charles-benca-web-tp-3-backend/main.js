@@ -11,6 +11,7 @@ mongoose.set('strictQuery', true);
 const HttpError = require("./models/http-error");
 const studentsRoutes = require("./routes/students-routes");
 const internshipsRoutes = require("./routes/internships-routes");
+const { exit } = require("process");
 // const testsRoutes = require("./routes/tests-routes");
 
 
@@ -56,13 +57,22 @@ mongoose.connect("mongodb://" + process.env.database_host + "/" + process.env.da
     console.log("connected to mongodb");
     const port = process.env.app_listen_port;
 
-    const httpsServer = https.createServer({
-        key: fs.readFileSync("./ssl/server.key", "utf8"),
-        cert: fs.readFileSync("./ssl/server.cert", "utf8")
-    }, app);
+    if (process.env.mode == "prod") {
+        const httpsServer = https.createServer({
+            key: fs.readFileSync("./ssl/server.key", "utf8"),
+            cert: fs.readFileSync("./ssl/server.cert", "utf8")
+        }, app);
+        httpsServer.listen(port);
+    }
+    else if (process.env.mode == "dev") {
+        app.listen(port);
+    }
+    else {
+        console.log("unknown running mode");
+        exit(1);
+    }
 
-    // app.listen(port);
-    httpsServer.listen(port);
+
     console.log("listening on port " + port);
 
 })

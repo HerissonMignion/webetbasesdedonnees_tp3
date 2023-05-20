@@ -16,4 +16,5 @@ RUN sh ./regen.sh
 WORKDIR /app
 RUN npm run build
 
-CMD ["serve", "--cors", "-s", "build", "--ssl-cert", "ssl/server.cert", "--ssl-key", "ssl/server.key"]
+CMD ["serve", "-s", "build"]
+#CMD ["serve", "--cors", "-s", "build", "--ssl-cert", "ssl/server.cert", "--ssl-key", "ssl/server.key"]
