@@ -7,10 +7,13 @@ import {
 } from "react-router-dom";
 import MainNavBar from './shared/navigation/MainNavBar';
 import Home from "./home/Home";
+import HomeFAQ from './home/HomeFAQ';
 import StudentsHome from './students/StudentsHome';
 import StudentsCreate from './students/StudentsCreate';
 import InternshipsHome from './internships/InternshipsHome';
 import InternshipsCreate from './internships/InternshipsCreate';
+import HomeProfils from './home/HomeProfils';
+import HomeDeroulement from './home/HomeDeroulement';
 
 
 
@@ -24,6 +27,18 @@ function App() {
           <Route exact path="/home" element={
             <Home />
           } />
+          <Route exact path="/home/faq" element={
+            <HomeFAQ />
+          } />
+          <Route exact path="/home/profils" element={
+            <HomeProfils />
+          } />
+          <Route exact path="/home/deroulement" element={
+            <HomeDeroulement />
+          } />
+          {/* <Route exact path="/home" element={
+            <Home />
+          } /> */}
           <Route exact path="/students/home" element={
             <StudentsHome />
           } />
